@@ -1,6 +1,6 @@
 "use client";
 
-import { Thumbnail as ThumbnailType } from "@/app/types/Notion";
+import { Thumbnail as ThumbnailType } from "@/types/Notion";
 
 export function Thumbnail({
   thumbnail,

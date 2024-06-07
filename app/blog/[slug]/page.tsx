@@ -8,8 +8,8 @@ import {
   blogPostsModels,
   getAllPublishedBlog,
   getSinglePost,
-} from "@/app/lib/notion";
-import { Post as PostType } from "@/app/types/Notion";
+} from "@/lib/notion";
+import { Post as PostType } from "@/types/Notion";
 const Thumbnail = dynamic(
   () => import("@/components/Thumbnail").then((res) => res.Thumbnail),
   { ssr: false }

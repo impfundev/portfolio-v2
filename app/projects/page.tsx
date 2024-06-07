@@ -1,6 +1,6 @@
 import { Card } from "@/components/Card";
-import { Post } from "../types/Notion";
-import { blogPostsModels, getAllPublishedProject } from "../lib/notion";
+import { Post } from "../../types/Notion";
+import { blogPostsModels, getAllPublishedProject } from "../../lib/notion";
 
 export default async function Blog() {
   const getProjects = await getAllPublishedProject();

@@ -1,4 +1,4 @@
-import { Tag } from "@/app/types/Notion";
+import { Tag } from "@/types/Notion";
 import Link from "next/link";
 
 type Tags = {

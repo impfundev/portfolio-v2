@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Tags } from "./Tags";
 import { useInView } from "react-intersection-observer";
-import { Tag } from "@/app/types/Notion";
+import { Tag } from "@/types/Notion";
 
 type Card = {
   title: string;
