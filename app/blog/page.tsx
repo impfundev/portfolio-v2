@@ -1,9 +1,10 @@
 import { Card } from "@/components/Card";
-import { getPosts } from "../lib/data";
 import { Post } from "../types/Notion";
+import { blogPostsModels, getAllPublishedBlog } from "../lib/notion";
 
 export default async function Blog() {
-  const posts = await getPosts();
+  const getPosts = await getAllPublishedBlog();
+  const posts: Post[] = getPosts.map((post) => blogPostsModels(post));
   return (
     <section className="mx-auto grid justify-between justify-items-center gap-10 pt-40">
       {posts.map((post: Post) => (

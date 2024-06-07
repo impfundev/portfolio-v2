@@ -2,18 +2,23 @@ export const dynamicParams = false;
 
 import { Card } from "@/components/Card";
 import { Tags } from "@/components/Tags";
-import { getPostBySlug, getPosts } from "@/app/lib/data";
 
 import dynamic from "next/dynamic";
+import {
+  blogPostsModels,
+  getAllPublishedBlog,
+  getSinglePost,
+} from "@/app/lib/notion";
+import { Post as PostType } from "@/app/types/Notion";
 const Thumbnail = dynamic(
   () => import("@/components/Thumbnail").then((res) => res.Thumbnail),
   { ssr: false }
 );
 
 export default async function Post({ params }: { params: { slug: string } }) {
-  const res = await getPosts();
-
-  const post = await getPostBySlug(params.slug);
+  const getPosts = await getAllPublishedBlog();
+  const res: PostType[] = getPosts.map((post) => blogPostsModels(post));
+  const post: PostType = await getSinglePost(params.slug);
 
   const posts = res
     .filter((p: any) => p.tags.includes(...post.tags) && p.slug !== params.slug)
@@ -62,7 +67,8 @@ export default async function Post({ params }: { params: { slug: string } }) {
 }
 
 export async function generateStaticParams() {
-  const posts = await getPosts();
+  const getPosts = await getAllPublishedBlog();
+  const posts: PostType[] = getPosts.map((post) => blogPostsModels(post));
 
   return posts.map((post) => ({
     slug: post.slug,

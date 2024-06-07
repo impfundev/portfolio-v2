@@ -1,9 +1,10 @@
 import { Card } from "@/components/Card";
-import { getProjects } from "../lib/data";
 import { Post } from "../types/Notion";
+import { blogPostsModels, getAllPublishedProject } from "../lib/notion";
 
 export default async function Blog() {
-  const projects = await getProjects();
+  const getProjects = await getAllPublishedProject();
+  const projects = getProjects.map((project) => blogPostsModels(project));
   return (
     <section className="mx-auto grid justify-between justify-items-center gap-10 pt-40">
       {projects.map((project: Post) => (
