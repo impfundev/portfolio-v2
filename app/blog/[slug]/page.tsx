@@ -3,17 +3,12 @@ export const revalidate = 10;
 import { Card } from "@/components/Card";
 import { Tags } from "@/components/Tags";
 
-import dynamic from "next/dynamic";
 import {
   blogPostsModels,
   getAllPublishedBlog,
   getSinglePost,
 } from "@/lib/notion";
 import { Post as PostType } from "@/types/Notion";
-const Thumbnail = dynamic(
-  () => import("@/components/Thumbnail").then((res) => res.Thumbnail),
-  { ssr: false }
-);
 
 export default async function Post({ params }: { params: { slug: string } }) {
   const getPosts = await getAllPublishedBlog();
@@ -30,7 +25,13 @@ export default async function Post({ params }: { params: { slug: string } }) {
         {post.title}
       </h1>
       <p className="text-xl md:text-2xl lg:text-3xl">{post.description}</p>
-      <Thumbnail thumbnail={post.thumbnail} alt={post.title} />
+      <img
+        src={post.thumbnail}
+        className="animate-fade-left animate-delay-700 w-full object-cover rounded-lg"
+        width={720}
+        height={480}
+        alt={post.title}
+      />
       {post.content && (
         <div
           className="prose md:prose-lg"
@@ -51,11 +52,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
                 description={post.description}
                 tags={post.tags}
                 slug={post.slug}
-                image={
-                  post.thumbnail.external!.url ||
-                  post.thumbnail.file!.url ||
-                  "https://dummyjson.com/image/400x400"
-                }
+                image={post.thumbnail}
                 type="blog"
               />
             ))}
@@ -79,9 +76,7 @@ export async function generateMetadata({
     openGraph: {
       title: post.title,
       description: post.description,
-      images: post.thumbnail.external
-        ? post.thumbnail.external.url
-        : post.thumbnail.file?.url,
+      images: post.thumbnail,
     },
   };
 }

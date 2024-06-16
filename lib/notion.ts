@@ -36,7 +36,7 @@ export const blogPostsModels = (post: any) => {
     slug: post.properties.slug.formula.string,
     description: post.properties.description.rich_text[0].plain_text,
     tags: post.properties.tags.multi_select,
-    thumbnail: post.properties.thumbnail.files[0],
+    thumbnail: post.properties.thumbnail.rich_text[0].text.content,
   };
 };
 

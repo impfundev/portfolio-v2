@@ -6,22 +6,11 @@ export type Post = {
   slug: string;
   description: string;
   tags: Tag[];
-  thumbnail: Thumbnail;
+  thumbnail: string;
   content?: string;
 };
 
 export type Tag = {
   id: string;
   name: string;
-};
-
-export type Thumbnail = {
-  name: string;
-  type: string;
-  file?: {
-    url: string;
-  };
-  external?: {
-    url: string;
-  };
 };

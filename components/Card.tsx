@@ -32,8 +32,9 @@ export function Card({ title, description, tags, image, type, slug }: Card) {
             <img
               src={image}
               className="animate-fade-left animate-delay-700 w-full object-cover rounded-lg"
-              width={200}
-              height={200}
+              width={480}
+              height={360}
+              alt={title}
               loading="lazy"
             />
           </Link>

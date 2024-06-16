@@ -1,8 +1,8 @@
 export const revalidate = 10;
 
 import { Card } from "@/components/Card";
-import { Post } from "../../types/Notion";
-import { blogPostsModels, getAllPublishedBlog } from "../../lib/notion";
+import { Post } from "@/types/Notion";
+import { blogPostsModels, getAllPublishedBlog } from "@/lib/notion";
 
 export default async function Blog() {
   const getPosts = await getAllPublishedBlog();
@@ -16,11 +16,7 @@ export default async function Blog() {
           description={post.description}
           tags={post.tags}
           slug={post.slug}
-          image={
-            post.thumbnail.external?.url ||
-            post.thumbnail.file?.url ||
-            "https://dummyjson.com/image/400x400"
-          }
+          image={post.thumbnail}
           type="blog"
         />
       ))}

@@ -3,17 +3,12 @@ export const revalidate = 10;
 import { Card } from "@/components/Card";
 import { Tags } from "@/components/Tags";
 
-import dynamic from "next/dynamic";
 import {
   blogPostsModels,
   getAllPublishedProject,
   getSingleProject,
 } from "@/lib/notion";
 import { Post } from "@/types/Notion";
-const Thumbnail = dynamic(
-  () => import("@/components/Thumbnail").then((res) => res.Thumbnail),
-  { ssr: false }
-);
 
 export default async function Project({
   params,
@@ -37,7 +32,13 @@ export default async function Project({
         {project.title}
       </h1>
       <p className="text-lg md:text-xl lg:text-2xl">{project.description}</p>
-      <Thumbnail thumbnail={project.thumbnail} alt={project.title} />
+      <img
+        src={project.thumbnail}
+        className="animate-fade-left animate-delay-700 w-full object-cover rounded-lg"
+        width={720}
+        height={480}
+        alt={project.title}
+      />
       {project.content && (
         <div
           className="prose md:prose-lg"
@@ -58,11 +59,7 @@ export default async function Project({
                 description={project.description}
                 tags={project.tags}
                 slug={project.slug}
-                image={
-                  project.thumbnail.external!.url ||
-                  project.thumbnail.file!.url ||
-                  "https://dummyjson.com/image/400x400"
-                }
+                image={project.thumbnail}
                 type="projects"
               />
             ))}
@@ -86,9 +83,7 @@ export async function generateMetadata({
     openGraph: {
       title: project.title,
       description: project.description,
-      images: project.thumbnail.external
-        ? project.thumbnail.external.url
-        : project.thumbnail.file?.url,
+      images: project.thumbnail,
     },
   };
 }
