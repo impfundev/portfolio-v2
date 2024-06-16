@@ -20,9 +20,6 @@ export function Header() {
         <p className="text-sm md:text-base animate-fade-right animate-delay-200">
           Full-Stack Web Developer
         </p>
-        <p className="text-sm md:text-base animate-fade-right animate-delay-300">
-          React, Node Js, Next Js
-        </p>
       </div>
       <Image
         src={"/profile.png"}

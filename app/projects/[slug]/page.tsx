@@ -1,4 +1,4 @@
-export const dynamicParams = false;
+export const revalidate = 10;
 
 import { Card } from "@/components/Card";
 import { Tags } from "@/components/Tags";
@@ -71,6 +71,26 @@ export default async function Project({
       )}
     </article>
   );
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const project: Post = await getSingleProject(params.slug);
+
+  return {
+    title: project.title,
+    description: project.description,
+    openGraph: {
+      title: project.title,
+      description: project.description,
+      images: project.thumbnail.external
+        ? project.thumbnail.external.url
+        : project.thumbnail.file?.url,
+    },
+  };
 }
 
 export async function generateStaticParams() {

@@ -1,4 +1,4 @@
-export const dynamicParams = false;
+export const revalidate = 10;
 
 import { Card } from "@/components/Card";
 import { Tags } from "@/components/Tags";
@@ -64,6 +64,26 @@ export default async function Post({ params }: { params: { slug: string } }) {
       )}
     </article>
   );
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const post: PostType = await getSinglePost(params.slug);
+
+  return {
+    title: post.title,
+    description: post.description,
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      images: post.thumbnail.external
+        ? post.thumbnail.external.url
+        : post.thumbnail.file?.url,
+    },
+  };
 }
 
 export async function generateStaticParams() {

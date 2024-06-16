@@ -1,6 +1,7 @@
 "use client";
 
 import { Thumbnail as ThumbnailType } from "@/types/Notion";
+import Image from "next/image";
 
 export function Thumbnail({
   thumbnail,
@@ -11,7 +12,7 @@ export function Thumbnail({
 }) {
   if (thumbnail.external)
     return (
-      <img
+      <Image
         src={thumbnail.external.url}
         alt={alt}
         className="w-full object-cover rounded-lg"
@@ -22,7 +23,7 @@ export function Thumbnail({
 
   if (thumbnail.file)
     return (
-      <img
+      <Image
         src={thumbnail.file.url}
         alt={alt}
         className="w-full object-cover rounded-lg"
@@ -33,7 +34,7 @@ export function Thumbnail({
 
   return (
     <img
-      src={"https://dummyjson.com/image/720x480"}
+      src={`https://dummyjson.com/image/720x480?text=${alt}`}
       alt={alt}
       className="w-full object-cover rounded-lg"
       width={720}

@@ -1,3 +1,5 @@
+export const revalidate = 10;
+
 import { Card } from "@/components/Card";
 import { Post } from "../../types/Notion";
 import { blogPostsModels, getAllPublishedProject } from "../../lib/notion";

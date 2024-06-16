@@ -24,17 +24,10 @@ export function Card({ title, description, tags, image, type, slug }: Card) {
   return (
     <article
       ref={ref}
-      className="w-full grid grid-cols-2 gap-6 leading-relaxed transition-all max-w-2xl"
+      className="w-full grid md:grid-cols-2 gap-6 leading-relaxed transition-all max-w-2xl"
     >
       {inView && (
         <>
-          <Link className="flex flex-col gap-4" href={route}>
-            <h2 className="animate-fade-right text-2xl font-bold">{title}</h2>
-            <Tags tags={tags} />
-            <p className="animate-fade-right animate-delay-500 line-clamp-4">
-              {description}
-            </p>
-          </Link>
           <Link href={route}>
             <img
               src={image}
@@ -44,6 +37,15 @@ export function Card({ title, description, tags, image, type, slug }: Card) {
               loading="lazy"
             />
           </Link>
+          <div className="flex flex-col gap-4">
+            <h2 className="animate-fade-right text-2xl font-bold">
+              <Link href={route}>{title}</Link>
+            </h2>
+            <Tags tags={tags} />
+            <p className="animate-fade-right animate-delay-500 line-clamp-4">
+              <Link href={route}>{description}</Link>
+            </p>
+          </div>
         </>
       )}
     </article>
