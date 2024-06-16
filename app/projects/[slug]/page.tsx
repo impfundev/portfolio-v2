@@ -1,6 +1,6 @@
 export const revalidate = 10;
 
-import { Card } from "@/components/Card";
+import { RelatedContent } from "@/components/Related";
 import { Tags } from "@/components/Tags";
 
 import {
@@ -31,10 +31,10 @@ export default async function Project({
       <h1 className="font-bold text-2xl md:text-4xl lg:text-5xl">
         {project.title}
       </h1>
-      <p className="text-lg md:text-xl lg:text-2xl">{project.description}</p>
+      <p className="text-lg lg:text-xl max-w-xl">{project.description}</p>
       <img
         src={project.thumbnail}
-        className="animate-fade-left animate-delay-700 w-full object-cover rounded-lg"
+        className="animate-fade-left animate-delay-700 w-full max-w-[720px] max-h-[480px] object-cover rounded-2xl"
         width={720}
         height={480}
         alt={project.title}
@@ -46,26 +46,7 @@ export default async function Project({
         />
       )}
       <Tags tags={project.tags} />
-      {projects.length !== 0 && (
-        <div className="grid gap-6 py-10">
-          <h2 className="text-center pb-10 font-bold text-2xl md:text-4xl lg:text-5xl">
-            Related
-          </h2>
-          <div className="w-full grid md:grid-cols-2 justify-between justify-items-center gap-10">
-            {projects.map((project) => (
-              <Card
-                key={project.id}
-                title={project.title}
-                description={project.description}
-                tags={project.tags}
-                slug={project.slug}
-                image={project.thumbnail}
-                type="projects"
-              />
-            ))}
-          </div>
-        </div>
-      )}
+      {projects.length !== 0 && <RelatedContent data={projects} />}
     </article>
   );
 }

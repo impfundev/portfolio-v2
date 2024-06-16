@@ -1,6 +1,6 @@
 export const revalidate = 10;
 
-import { Card } from "@/components/Card";
+import { RelatedContent } from "@/components/Related";
 import { Tags } from "@/components/Tags";
 
 import {
@@ -27,7 +27,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
       <p className="text-xl md:text-2xl lg:text-3xl">{post.description}</p>
       <img
         src={post.thumbnail}
-        className="animate-fade-left animate-delay-700 w-full object-cover rounded-lg"
+        className="animate-fade-left animate-delay-700 w-full max-w-[720px] max-h-[480px] object-cover rounded-2xl"
         width={720}
         height={480}
         alt={post.title}
@@ -39,26 +39,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
         />
       )}
       <Tags tags={post.tags} />
-      {posts.length !== 0 && (
-        <div className="grid gap-6 py-10">
-          <h2 className="text-center pb-10 font-bold text-2xl md:text-4xl lg:text-5xl">
-            Related
-          </h2>
-          <div className="w-full grid md:grid-cols-2 justify-between justify-items-center gap-10">
-            {posts.map((post) => (
-              <Card
-                key={post.id}
-                title={post.title}
-                description={post.description}
-                tags={post.tags}
-                slug={post.slug}
-                image={post.thumbnail}
-                type="blog"
-              />
-            ))}
-          </div>
-        </div>
-      )}
+      {posts.length !== 0 && <RelatedContent data={posts} />}
     </article>
   );
 }
