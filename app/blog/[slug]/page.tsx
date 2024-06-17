@@ -21,7 +21,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
     )
     .slice(0, 6);
 
-  return <Content item={post} lists={posts} />;
+  return <Content type="blog" item={post} lists={posts} />;
 }
 
 export async function generateMetadata({

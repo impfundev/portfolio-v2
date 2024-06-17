@@ -2,7 +2,13 @@ import { Post } from "@/types/Notion";
 import { Card } from "@/components/Card";
 import { LazyContainer } from "./LazyContainer";
 
-export function RelatedContent({ data }: { data: Post[] }) {
+export function RelatedContent({
+  data,
+  type,
+}: {
+  data: Post[];
+  type: "blog" | "projects";
+}) {
   return (
     <LazyContainer className="grid gap-4 py-10">
       <h3 className="animate-fade-up text-center pb-10 font-bold text-xl md:text-2xl lg:text-4xl">
@@ -18,7 +24,7 @@ export function RelatedContent({ data }: { data: Post[] }) {
             tags={item.tags}
             slug={item.slug}
             image={item.thumbnail}
-            type="blog"
+            type={type}
           />
         ))}
       </div>

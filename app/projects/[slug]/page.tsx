@@ -27,7 +27,7 @@ export default async function Project({
     )
     .slice(0, 6);
 
-  return <Content item={project} lists={projects} />;
+  return <Content type="projects" item={project} lists={projects} />;
 }
 
 export async function generateMetadata({
