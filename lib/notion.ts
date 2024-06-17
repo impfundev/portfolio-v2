@@ -1,5 +1,4 @@
 import { Client } from "@notionhq/client";
-import { NotionRenderer } from "@notion-render/client";
 
 export const notion = new Client({
   auth: process.env.NOTION_TOKEN,
@@ -60,15 +59,11 @@ export const getSinglePost = async (slug: string) => {
   });
 
   const content: any = responseBlockPages.results;
-  const renderer = new NotionRenderer({
-    client: notion,
-  });
-  const html = await renderer.render(...content);
   const data = blogPostsModels(singlePost);
 
   return {
     ...data,
-    content: html,
+    content,
   };
 };
 
@@ -113,15 +108,11 @@ export const getSingleProject = async (slug: string) => {
     block_id: singlePost.id,
   });
 
-  const content: any = responseBlockPages.results;
-  const renderer = new NotionRenderer({
-    client: notion,
-  });
-  const html = await renderer.render(...content);
+  const content = responseBlockPages.results;
   const data = blogPostsModels(singlePost);
 
   return {
     ...data,
-    content: html,
+    content,
   };
 };

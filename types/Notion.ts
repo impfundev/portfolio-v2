@@ -7,7 +7,7 @@ export type Post = {
   description: string;
   tags: Tag[];
   thumbnail: string;
-  content?: string;
+  content?: any;
 };
 
 export type Tag = {

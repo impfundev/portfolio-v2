@@ -2,6 +2,7 @@ import { Post } from "@/types/Notion";
 import { RelatedContent } from "@/components/Related";
 import { Tags } from "@/components/Tags";
 import { Author } from "@/components/Author";
+import { Render } from "@9gustin/react-notion-render";
 
 export function Content({ item, lists }: { item: Post; lists: Post[] }) {
   return (
@@ -20,10 +21,9 @@ export function Content({ item, lists }: { item: Post; lists: Post[] }) {
         alt={item.title}
       />
       {item.content && (
-        <div
-          className="prose md:prose-lg"
-          dangerouslySetInnerHTML={{ __html: item.content }}
-        />
+        <div className="prose md:prose-lg">
+          <Render blocks={item.content} />
+        </div>
       )}
       <Tags tags={item.tags} />
       <Author />
