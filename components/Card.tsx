@@ -3,10 +3,11 @@
 import Link from "next/link";
 import { Tags } from "@/components/Tags";
 import { Tag } from "@/types/Notion";
+import Image from "next/image";
 
 type Card = {
   title: string;
-  image?: string;
+  image: string;
   description: string;
   tags: Tag[];
   slug: string;
@@ -19,7 +20,7 @@ export function Card({ title, description, tags, image, type, slug }: Card) {
   return (
     <article className="w-full grid md:grid-cols-2 gap-6 leading-relaxed transition-all max-w-2xl">
       <Link href={route}>
-        <img
+        <Image
           src={image}
           className="animate-fade-left animate-delay-700 w-full object-cover rounded-lg"
           width={480}
