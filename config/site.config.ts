@@ -1,20 +1,20 @@
 export const site_config = {
   title: "Ilham Maulana Pratama - Full-Stack Web Developer",
   description:
-    "Hi, I'm Ilham Maulana Pratama, a Full-Stack Web Developer. I've build website using React, Node.js, and Next.js over 3 years.",
+    "Ilham Maulana Pratama is a full-stack web developer where experienced in building web aplication using React, Node.js, and Next.js. Expertised in Javascript and Typescript, but also enthusias learning and using PHP and Python, including the framworks such as Laravel and Django to developed backend side.",
   author: {
     name: "Ilham Maulana Pratama",
     email: "ilhammaulana.dev@gmail.com",
     github: "https://github.com/impfundev",
-    bio: "Full-Stack Web Developer with over 3 years of experience build website using React, Node.js, and Next.js.",
+    bio: "Ilham Maulana Pratama is a full-stack web developer where experienced in building web aplication using React, Node.js, and Next.js. Expertised in Javascript and Typescript, but also enthusias learning and using PHP and Python, including the framworks such as Laravel and Django to developed backend side.",
   },
   blog: {
-    title: "Ilham Maulana Pratama - Blog",
+    title: "Blog - Ilham Maulana Pratama",
     description:
       "Sharing about the world of web development, including tech stack and projects such as Javascripts, Typescript, PHP, Python, Laravel, Django, React, Node.js, Next.js, and More.",
   },
   projects: {
-    title: "Ilham Maulana Pratama - Projects",
+    title: "Projects - Ilham Maulana Pratama",
     description: "List of projects I've worked on",
   },
 };
