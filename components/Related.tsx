@@ -13,6 +13,7 @@ export function RelatedContent({ data }: { data: Post[] }) {
           <Card
             key={item.id}
             title={item.title}
+            date={item.updateAt}
             description={item.description}
             tags={item.tags}
             slug={item.slug}

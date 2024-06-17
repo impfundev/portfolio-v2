@@ -1,9 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
+import moment from "moment";
+
 import { Tags } from "@/components/Tags";
 import { Tag } from "@/types/Notion";
-import Image from "next/image";
 
 type Card = {
   title: string;
@@ -12,9 +14,18 @@ type Card = {
   tags: Tag[];
   slug: string;
   type: "blog" | "projects";
+  date: Date;
 };
 
-export function Card({ title, description, tags, image, type, slug }: Card) {
+export function Card({
+  title,
+  description,
+  tags,
+  image,
+  type,
+  slug,
+  date,
+}: Card) {
   const route = type + "/" + slug;
 
   return (
@@ -29,14 +40,17 @@ export function Card({ title, description, tags, image, type, slug }: Card) {
           loading="lazy"
         />
       </Link>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-2">
         <h2 className="animate-fade-right text-2xl font-bold">
           <Link href={route}>{title}</Link>
         </h2>
-        <Tags tags={tags} />
-        <p className="animate-fade-right animate-delay-500 line-clamp-4">
+        <time className="text-sm text-muted" dateTime={String(date)}>
+          {moment(date, "YYYYMMDD").fromNow()}
+        </time>
+        <p className="animate-fade-right animate-delay-500 line-clamp-4 mb-2">
           <Link href={route}>{description}</Link>
         </p>
+        <Tags tags={tags} />
       </div>
     </article>
   );

@@ -14,6 +14,7 @@ export default async function Blog() {
         <Card
           key={project.id}
           title={project.title}
+          date={project.updateAt}
           description={project.description}
           tags={project.tags}
           slug={project.slug}

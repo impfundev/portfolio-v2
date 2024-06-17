@@ -1,9 +1,10 @@
+import Image from "next/image";
+import moment from "moment";
 import { Post } from "@/types/Notion";
 import { RelatedContent } from "@/components/Related";
 import { Tags } from "@/components/Tags";
 import { Author } from "@/components/Author";
 import { Render } from "@9gustin/react-notion-render";
-import Image from "next/image";
 
 export function Content({ item, lists }: { item: Post; lists: Post[] }) {
   return (
@@ -14,6 +15,9 @@ export function Content({ item, lists }: { item: Post; lists: Post[] }) {
       <p className="text-muted md:text-lg lg:text-xl max-w-xl">
         {item.description}
       </p>
+      <time className="text-sm text-muted" dateTime={String(item.updateAt)}>
+        {moment(item.updateAt, "YYYYMMDD").fromNow()}
+      </time>
       <Image
         src={item.thumbnail}
         className="animate-fade-left animate-delay-700 w-full max-w-[720px] max-h-[480px] object-cover rounded-2xl"

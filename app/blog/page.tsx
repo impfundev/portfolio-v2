@@ -13,6 +13,7 @@ export default async function Blog() {
         <Card
           key={post.id}
           title={post.title}
+          date={post.updateAt}
           description={post.description}
           tags={post.tags}
           slug={post.slug}
