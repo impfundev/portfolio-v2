@@ -5,8 +5,17 @@ import { RelatedContent } from "@/components/Related";
 import { Tags } from "@/components/Tags";
 import { Author } from "@/components/Author";
 import { Render } from "@9gustin/react-notion-render";
+import { Comments } from "@/components/Comment";
 
-export function Content({ item, lists }: { item: Post; lists: Post[] }) {
+export function Content({
+  item,
+  lists,
+  type,
+}: {
+  item: Post;
+  lists: Post[];
+  type: "blog" | "projects";
+}) {
   return (
     <article className="grid gap-4 pt-20">
       <h1 className="font-bold text-2xl md:text-4xl lg:text-5xl">
@@ -30,9 +39,10 @@ export function Content({ item, lists }: { item: Post; lists: Post[] }) {
           <Render blocks={item.content} />
         </div>
       )}
+      <Comments />
       <Tags tags={item.tags} />
       <Author />
-      {lists.length !== 0 && <RelatedContent data={lists} />}
+      {lists.length !== 0 && <RelatedContent type={type} data={lists} />}
     </article>
   );
 }
