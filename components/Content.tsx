@@ -6,6 +6,7 @@ import { Tags } from "@/components/Tags";
 import { Author } from "@/components/Author";
 import { Render } from "@9gustin/react-notion-render";
 import { Comments } from "@/components/Comment";
+import { LazyContainer } from "./LazyContainer";
 
 export function Content({
   item,
@@ -27,13 +28,15 @@ export function Content({
       <time className="text-sm text-muted" dateTime={String(item.updateAt)}>
         {moment(item.updateAt, "YYYYMMDD").fromNow()}
       </time>
-      <Image
-        src={item.thumbnail}
-        className="animate-fade-left animate-delay-700 w-full max-w-[720px] max-h-[480px] object-cover rounded-2xl"
-        width={720}
-        height={480}
-        alt={item.title}
-      />
+      <LazyContainer>
+        <Image
+          src={item.thumbnail}
+          className="w-full max-w-[720px] max-h-[480px] object-cover rounded-2xl"
+          width={720}
+          height={480}
+          alt={item.title}
+        />
+      </LazyContainer>
       {item.content && (
         <div className="prose md:prose-lg">
           <Render blocks={item.content} />

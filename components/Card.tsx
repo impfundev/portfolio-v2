@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import moment from "moment";
 
+import { LazyContainer } from "@/components/LazyContainer";
 import { Tags } from "@/components/Tags";
 import { Tag } from "@/types/Notion";
 
@@ -30,7 +31,7 @@ export function Card({
 
   return (
     <article className="w-full grid md:grid-cols-2 gap-6 leading-relaxed transition-all max-w-2xl">
-      <Link href={route}>
+      <LazyContainer>
         <Image
           src={image}
           className="animate-fade-left animate-delay-700 w-full object-cover rounded-lg"
@@ -39,7 +40,7 @@ export function Card({
           alt={title}
           loading="lazy"
         />
-      </Link>
+      </LazyContainer>
       <div className="flex flex-col gap-2">
         <h2 className="animate-fade-right text-2xl font-bold">
           <Link href={route}>{title}</Link>
