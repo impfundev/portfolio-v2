@@ -5,14 +5,14 @@ import { LazyContainer } from "./LazyContainer";
 
 export function Author() {
   return (
-    <LazyContainer className="py-10 flex flex-col md:flex-row gap-6 max-w-2xl">
+    <LazyContainer className="py-10 flex flex-col md:flex-row max-w-lg">
       <Link href={"/about"} className="w-full">
         <Image
           src={"/profile.png"}
           alt="profile"
           width={500}
           height={500}
-          className="animate-fade-left animate-delay-500 w-[60px] h-[60px] object-cover rounded-full"
+          className="animate-fade-left animate-delay-500 w-[60px] h-[60px] object-cover rounded-full mb-4"
         />
       </Link>
       <Link
