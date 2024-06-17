@@ -21,7 +21,9 @@ export default async function Project({
 
   const projects = res
     .filter(
-      (p: any) => p.tags.includes(...project.tags) && p.slug !== params.slug
+      (p: Post) =>
+        p.tags.map((tag) => project.tags.includes(tag)) &&
+        p.slug !== params.slug
     )
     .slice(0, 6);
 

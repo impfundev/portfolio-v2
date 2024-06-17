@@ -1,13 +1,14 @@
 import { Post } from "@/types/Notion";
 import { Card } from "@/components/Card";
+import { LazyContainer } from "./LazyContainer";
 
 export function RelatedContent({ data }: { data: Post[] }) {
   return (
-    <div className="grid gap-6 py-10">
-      <h2 className="text-center pb-10 font-bold text-2xl md:text-4xl lg:text-5xl">
+    <LazyContainer className="grid gap-4 py-10">
+      <h3 className="animate-fade-up text-center pb-10 font-bold text-xl md:text-2xl lg:text-4xl">
         Related
-      </h2>
-      <div className="w-full grid md:grid-cols-2 justify-between justify-items-center gap-10">
+      </h3>
+      <div className="w-full grid justify-between justify-items-center gap-10">
         {data.map((item) => (
           <Card
             key={item.id}
@@ -20,6 +21,6 @@ export function RelatedContent({ data }: { data: Post[] }) {
           />
         ))}
       </div>
-    </div>
+    </LazyContainer>
   );
 }

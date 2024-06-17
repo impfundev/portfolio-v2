@@ -15,7 +15,10 @@ export default async function Post({ params }: { params: { slug: string } }) {
   const post: PostType = await getSinglePost(params.slug);
 
   const posts = res
-    .filter((p: any) => p.tags.includes(...post.tags) && p.slug !== params.slug)
+    .filter(
+      (p: PostType) =>
+        p.tags.map((tag) => post.tags.includes(tag)) && p.slug !== params.slug
+    )
     .slice(0, 6);
 
   return <Content item={post} lists={posts} />;
