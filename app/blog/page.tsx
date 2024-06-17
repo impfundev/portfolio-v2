@@ -1,8 +1,8 @@
-export const revalidate = 10;
-
 import { Card } from "@/components/Card";
 import { Post } from "@/types/Notion";
 import { blogPostsModels, getAllPublishedBlog } from "@/lib/notion";
+
+export const revalidate = 86400;
 
 export default async function Blog() {
   const getPosts = await getAllPublishedBlog();

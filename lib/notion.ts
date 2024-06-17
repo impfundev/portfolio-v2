@@ -1,10 +1,11 @@
 import { Client } from "@notionhq/client";
+import { cache } from "react";
 
 export const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 });
 
-export const getAllPublishedBlog = async () => {
+export const getAllPublishedBlog = cache(async () => {
   const posts = await notion.databases.query({
     database_id: process.env.NOTION_DATABASE_POSTS_ID!,
     filter: {
@@ -24,9 +25,9 @@ export const getAllPublishedBlog = async () => {
   const allPosts = posts.results;
 
   return allPosts;
-};
+});
 
-export const blogPostsModels = (post: any) => {
+export const blogPostsModels = cache((post: any) => {
   return {
     id: post.id,
     publishAt: post.properties.publishAt.date.start,
@@ -37,9 +38,9 @@ export const blogPostsModels = (post: any) => {
     tags: post.properties.tags.multi_select,
     thumbnail: post.properties.thumbnail.rich_text[0].text.content,
   };
-};
+});
 
-export const getSinglePost = async (slug: string) => {
+export const getSinglePost = cache(async (slug: string) => {
   const response = await notion.databases.query({
     database_id: process.env.NOTION_DATABASE_POSTS_ID!,
     filter: {
@@ -65,9 +66,9 @@ export const getSinglePost = async (slug: string) => {
     ...data,
     content,
   };
-};
+});
 
-export const getAllPublishedProject = async () => {
+export const getAllPublishedProject = cache(async () => {
   const projects = await notion.databases.query({
     database_id: process.env.NOTION_DATABASE_PROJECTS_ID!,
     filter: {
@@ -87,9 +88,9 @@ export const getAllPublishedProject = async () => {
   const allProject = projects.results;
 
   return allProject;
-};
+});
 
-export const getSingleProject = async (slug: string) => {
+export const getSingleProject = cache(async (slug: string) => {
   const response = await notion.databases.query({
     database_id: process.env.NOTION_DATABASE_PROJECTS_ID!,
     filter: {
@@ -115,4 +116,4 @@ export const getSingleProject = async (slug: string) => {
     ...data,
     content,
   };
-};
+});
