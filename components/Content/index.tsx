@@ -1,10 +1,7 @@
 import moment from "moment";
 import { Post } from "@/types/Notion";
-import { RelatedContent } from "@/components/Related";
-import { Tags } from "@/components/Tags";
-import { Author } from "@/components/Author";
 import { Render } from "@9gustin/react-notion-render";
-import { Comments } from "@/components/Comment";
+import { ContentFooter } from "@/components/Content/ContentFooter";
 
 export function Content({
   item,
@@ -16,8 +13,8 @@ export function Content({
   type: "blog" | "projects";
 }) {
   return (
-    <div className="grid gap-4 pt-20">
-      <article className="typography">
+    <>
+      <article className="typography pt-20">
         <h1>{item.title}</h1>
         <p className="text-muted md:text-lg lg:text-xl max-w-xl">
           {item.description}
@@ -27,10 +24,7 @@ export function Content({
         </time>
         {item.content && <Render blocks={item.content} />}
       </article>
-      <Comments />
-      <Tags tags={item.tags} />
-      <Author />
-      {lists.length !== 0 && <RelatedContent type={type} data={lists} />}
-    </div>
+      <ContentFooter item={item} lists={lists} type={type} />
+    </>
   );
 }
