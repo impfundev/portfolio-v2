@@ -50,7 +50,12 @@ export function Navigation() {
               Blog
             </Link>
           </nav>
-          <button onClick={() => setShow(!show)} className="rounded-full">
+          <button
+            id="mobile-menu"
+            aria-label="mobile-menu"
+            onClick={() => setShow(!show)}
+            className="rounded-full"
+          >
             <TokensIcon
               className={`md:hidden w-5 h-5 md:w-6 md:h-6 ${
                 show && "rotate-45"

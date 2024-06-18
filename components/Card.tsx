@@ -38,10 +38,9 @@ export function Card({
           width={480}
           height={360}
           alt={title}
-          loading="lazy"
         />
       </LazyContainer>
-      <div className="flex flex-col gap-2">
+      <LazyContainer className="flex flex-col gap-2">
         <h2 className="animate-fade-right text-2xl font-bold">
           <Link href={route}>{title}</Link>
         </h2>
@@ -52,7 +51,7 @@ export function Card({
           <Link href={route}>{description}</Link>
         </p>
         <Tags tags={tags} />
-      </div>
+      </LazyContainer>
     </article>
   );
 }
