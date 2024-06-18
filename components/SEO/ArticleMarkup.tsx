@@ -3,7 +3,7 @@ import Script from "next/script";
 import { site_config } from "@/config/site.config";
 
 export function ArticleMarkup({ data }: { data: Post }) {
-  const json = {
+  const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: data.title,
@@ -25,9 +25,10 @@ export function ArticleMarkup({ data }: { data: Post }) {
   };
   return (
     <Script
-      id="article-markup"
+      id="article-schema"
+      type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify(json),
+        __html: JSON.stringify(jsonLd),
       }}
     />
   );
