@@ -7,8 +7,6 @@ import {
 } from "@/lib/notion";
 import { Post } from "@/types/Notion";
 
-export const revalidate = 43200;
-
 export default async function Project({
   params,
 }: {

@@ -2,8 +2,6 @@ import { Card } from "@/components/Card";
 import { Post } from "@/types/Notion";
 import { blogPostsModels, getAllPublishedProject } from "@/lib/notion";
 
-export const revalidate = 43200;
-
 export default async function Blog() {
   const getProjects = await getAllPublishedProject();
   const projects = getProjects.map((project) => blogPostsModels(project));

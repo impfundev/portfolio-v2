@@ -7,6 +7,8 @@ export const metadata: Metadata = {
   description: site_config.blog.description,
 };
 
+export const revalidate = 10;
+
 export default function BlogLayout({ children }: { children: ReactNode }) {
   return <>{children}</>;
 }

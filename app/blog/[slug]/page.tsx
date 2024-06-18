@@ -7,8 +7,6 @@ import {
 } from "@/lib/notion";
 import { Post as PostType } from "@/types/Notion";
 
-export const revalidate = 86400;
-
 export default async function Post({ params }: { params: { slug: string } }) {
   const getPosts = await getAllPublishedBlog();
   const res: PostType[] = getPosts.map((post) => blogPostsModels(post));
