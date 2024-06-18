@@ -9,6 +9,7 @@ export function ArticleMarkup({ data }: { data: Post }) {
     headline: data.title,
     description: data.description,
     thumbnailUrl: data.thumbnail,
+    image: data.thumbnail,
     datePublished: data.publishAt,
     dateModified: data.updateAt,
     author: {
