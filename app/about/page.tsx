@@ -1,4 +1,5 @@
 import { Header } from "@/components/Header";
+import { AuthorMarkup } from "@/components/SEO/AuthorMarkup";
 import {
   EnvelopeClosedIcon,
   GitHubLogoIcon,
@@ -58,6 +59,7 @@ export default function About() {
           applications.
         </p>
       </div>
+      <AuthorMarkup />
     </section>
   );
 }

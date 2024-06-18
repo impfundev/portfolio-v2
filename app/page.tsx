@@ -1,3 +1,6 @@
+import { AuthorMarkup } from "@/components/SEO/AuthorMarkup";
+import { SiteMarkup } from "@/components/SEO/SiteMarkup";
+
 export default function About() {
   return (
     <section className="flex flex-col gap-8 items-cemter justify-center text-center">
@@ -15,6 +18,8 @@ export default function About() {
         passionate about digital product that help people execute they needs
         more easier.
       </p>
+      <AuthorMarkup />
+      <SiteMarkup />
     </section>
   );
 }

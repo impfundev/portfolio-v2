@@ -1,24 +1,8 @@
-import { Card } from "@/components/Card";
-import { Post } from "@/types/Notion";
 import { blogPostsModels, getAllPublishedBlog } from "@/lib/notion";
+import { DataList } from "@/components/DataList";
 
 export default async function Blog() {
   const getPosts = await getAllPublishedBlog();
-  const posts: Post[] = getPosts.map((post) => blogPostsModels(post));
-  return (
-    <section className="mx-auto grid justify-between justify-items-center gap-10 pt-40">
-      {posts.map((post: Post) => (
-        <Card
-          key={post.id}
-          title={post.title}
-          date={post.updateAt}
-          description={post.description}
-          tags={post.tags}
-          slug={post.slug}
-          image={post.thumbnail}
-          type="blog"
-        />
-      ))}
-    </section>
-  );
+  const posts = getPosts.map((post) => blogPostsModels(post));
+  return <DataList type="blog" data={posts} />;
 }

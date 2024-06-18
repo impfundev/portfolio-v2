@@ -22,6 +22,7 @@ export function Content({
         <time className="text-sm text-muted" dateTime={String(item.updateAt)}>
           {moment(item.updateAt, "YYYYMMDD").fromNow()}
         </time>
+        <hr className="my-6 border-transparent" />
         {item.content && <Render blocks={item.content} />}
       </article>
       <ContentFooter item={item} lists={lists} type={type} />

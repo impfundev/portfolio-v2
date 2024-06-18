@@ -27,30 +27,32 @@ export function Card({
   slug,
   date,
 }: Card) {
-  const route = type + "/" + slug;
+  const route = "/" + type + "/" + slug;
 
   return (
-    <article className="w-full grid md:grid-cols-2 gap-6 leading-relaxed transition-all max-w-2xl">
-      <LazyContainer>
-        <Image
-          src={image}
-          className="animate-fade-left animate-delay-700 w-full object-cover rounded-lg"
-          width={480}
-          height={360}
-          alt={title}
-        />
-      </LazyContainer>
-      <LazyContainer className="flex flex-col gap-2">
-        <h2 className="animate-fade-right text-2xl font-bold">
-          <Link href={route}>{title}</Link>
-        </h2>
-        <time className="text-sm text-muted" dateTime={String(date)}>
-          {moment(date, "YYYYMMDD").fromNow()}
-        </time>
-        <p className="animate-fade-right animate-delay-500 line-clamp-4 mb-2">
-          <Link href={route}>{description}</Link>
-        </p>
-        <Tags tags={tags} />
+    <article className="w-full max-w-2xl">
+      <LazyContainer className="grid md:grid-cols-2 gap-6 leading-relaxed">
+        <Link href={route}>
+          <Image
+            src={image}
+            className="animate-fade-left animate-delay-700 w-full object-cover rounded-lg"
+            width={480}
+            height={360}
+            alt={title}
+          />
+        </Link>
+        <div className="flex flex-col gap-2">
+          <h2 className="animate-fade-right text-2xl font-bold">
+            <Link href={route}>{title}</Link>
+          </h2>
+          <time className="text-sm text-muted" dateTime={String(date)}>
+            {moment(date, "YYYYMMDD").fromNow()}
+          </time>
+          <p className="animate-fade-right animate-delay-500 line-clamp-4 mb-2">
+            <Link href={route}>{description}</Link>
+          </p>
+          <Tags tags={tags} />
+        </div>
       </LazyContainer>
     </article>
   );
