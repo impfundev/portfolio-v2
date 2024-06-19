@@ -5,6 +5,7 @@ export function SiteMarkup() {
     "@type": "WebSite",
     url: baseUrl,
     potentialAction: {
+      "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
         urlTemplate: `${baseUrl}/blog/#search?q={search_term_string}`,
