@@ -7,10 +7,11 @@ export function SiteMarkup() {
     "@type": "WebSite",
     url: baseUrl,
     name: site_config.title,
+    title: site_config.title,
     potentialAction: {
       "@type": "SearchAction",
       target: `${baseUrl}/blog/#search?q=`,
-      queryInput: "search_term_string",
+      "query-input": "search_term_string",
     },
   };
   return (
