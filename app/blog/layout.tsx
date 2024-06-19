@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { site_config } from "@/config/site.config";
 import { ReactNode } from "react";
+import { BlogMarkup } from "@/components/SEO/BlogMarkup";
 
 export const metadata: Metadata = {
   title: site_config.blog.title,
@@ -10,5 +11,10 @@ export const metadata: Metadata = {
 export const revalidate = 10;
 
 export default function BlogLayout({ children }: { children: ReactNode }) {
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <BlogMarkup />
+    </>
+  );
 }

@@ -9,10 +9,8 @@ export function SiteMarkup() {
     name: site_config.title,
     potentialAction: {
       "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${baseUrl}/blog/#search?q={search_term_string}`,
-      },
+      target: `${baseUrl}/blog/#search?q=`,
+      queryInput: "search_term_string",
     },
   };
   return (

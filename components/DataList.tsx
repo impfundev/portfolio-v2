@@ -6,8 +6,6 @@ import { filterData, searchAtom } from "@/stores/searchAtom";
 import { Post } from "@/types/Notion";
 import { Search } from "@/components/Search";
 import { Card } from "@/components/Card";
-import { ProjectsMarkup } from "@/components/SEO/ProjectsMarkup";
-import { BlogMarkup } from "@/components/SEO/BlogMarkup";
 
 export function DataList({
   data,
@@ -48,7 +46,6 @@ export function DataList({
           </p>
         </div>
       )}
-      {type === "projects" ? <ProjectsMarkup /> : <BlogMarkup />}
     </section>
   );
 }
