@@ -1,17 +1,15 @@
-import { site_config } from "@/config/site.config";
-
 export function SiteMarkup() {
   const baseUrl = process.env.BASE_URL || "https://ilhammaulana.me";
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
     url: baseUrl,
-    name: site_config.title,
-    title: site_config.title,
     potentialAction: {
-      "@type": "SearchAction",
-      target: `${baseUrl}/blog/#search?q=`,
-      "query-input": "search_term_string",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${baseUrl}/blog/#search?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
     },
   };
   return (
