@@ -1,10 +1,9 @@
-import Script from "next/script";
 import { site_config } from "@/config/site.config";
+import { NextSeo } from "next-seo";
 
 export function ProjectsMarkup() {
   const baseUrl = process.env.BASE_URL || "https://ilhammp.netlify.app";
   const jsonLd = {
-    "@context": "https://schema.org",
     "@type": "Blog",
     "@id": `${baseUrl}/about/#publisherProject`,
     name: site_config.projects.title,
@@ -51,13 +50,5 @@ export function ProjectsMarkup() {
       { "@type": "Thing", name: "streaming platforms" },
     ],
   };
-  return (
-    <Script
-      id="projects-schema"
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        __html: JSON.stringify(jsonLd),
-      }}
-    />
-  );
+  return <NextSeo {...jsonLd} />;
 }
