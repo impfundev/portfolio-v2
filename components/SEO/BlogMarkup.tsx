@@ -1,9 +1,9 @@
-import { NextSeo } from "next-seo";
 import { site_config } from "@/config/site.config";
 
 export function BlogMarkup() {
-  const baseUrl = process.env.BASE_URL || "https://ilhammp.netlify.app";
+  const baseUrl = process.env.BASE_URL || "https://ilhammaulana.me";
   const jsonLd = {
+    "@context": "https://schema.org",
     "@type": "Blog",
     "@id": `${baseUrl}/about/#publisherBlog`,
     name: site_config.blog.title,
@@ -50,5 +50,12 @@ export function BlogMarkup() {
       { "@type": "Thing", name: "streaming platforms" },
     ],
   };
-  return <NextSeo {...jsonLd} />;
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(jsonLd),
+      }}
+    />
+  );
 }

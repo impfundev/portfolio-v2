@@ -1,9 +1,8 @@
 import { Post } from "@/types/Notion";
-import Script from "next/script";
 import { site_config } from "@/config/site.config";
 
 export function ArticleMarkup({ data }: { data: Post }) {
-  const baseUrl = process.env.BASE_URL || "https://ilhammp.netlify.app";
+  const baseUrl = process.env.BASE_URL || "https://ilhammaulana.me";
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -27,8 +26,7 @@ export function ArticleMarkup({ data }: { data: Post }) {
     url: `${baseUrl}/${data.slug}`,
   };
   return (
-    <Script
-      id="article-schema"
+    <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{
         __html: JSON.stringify(jsonLd),
